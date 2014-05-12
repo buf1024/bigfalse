@@ -1,0 +1,35 @@
+<div class="col-sm-12">
+  <ol class="breadcrumb">
+    <li><a href="#">管理</a></li>
+    <li class="active">评论管理</li>
+  </ol>
+
+  <table class="table table-hover table-bordered table-striped table-condensed">
+    <tbody id="table_more">
+    <tr>
+      <th class="text-center-align">序号</th>
+      <th class="text-center-align">文章</th>
+      <th class="text-center-align">评论</th>
+      <th class="text-center-align">作者</th>
+      <th class="text-center-align">时间</th>
+      <th class="text-center-align">基本操作</th>
+    </tr>
+    {% for comment in comments %}
+    <tr>
+      <td class="text-center-align">{{ forloop.counter }}</td>
+      <td>{{ comment.passage.title }}</td>
+      <td>{{ comment.content }}</td>
+      <td class="text-center-align">{{ comment.author }}</td>
+      <td class="text-center-align">{{ comment.create_time |date:"Y-m-d H:i:s"}}</td>
+      <td class="text-center-align">
+        <button class="btn btn-xs btn-info" data="{{ comment.id }}|{{ comment.passage.id}}" id="mngcomment_view_{{ comment.id }}">查看</button>
+        <button class="btn btn-xs btn-info" data="{{ comment.id }}|{{ comment.passage.id}}" id="mngcomment_reply_{{ comment.id }}">回复</button>
+        <button class="btn btn-xs btn-danger" data="{{ comment.id }}|{{ comment.passage.id}}" id="mngcomment_delete_{{ comment.id }}">删除</button>
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {{ page_count_block|safe }}
+</div>
+</div>

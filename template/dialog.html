@@ -1,0 +1,23 @@
+<div class="modal fade" id="{{dialog_id}}" tabindex="-1" role="dialog" aria-labelledby="glabal_dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="{{dialog_title_id}}">{{ dialog_title }}</h4>
+      </div>
+      <div class="modal-body">
+        <p id="{{dialog_body_id}}">
+          {{ dialog_body|safe }}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+        {% if btns %}
+        {% for btn in btns %}
+        <button type="button" class="btn btn-info" id="{{ btn.id }}" data="" role="">{{ btn.title }}</button>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

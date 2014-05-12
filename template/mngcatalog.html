@@ -1,0 +1,40 @@
+<div class="col-md-9">
+<ol class="breadcrumb">
+  <li><a href="#">管理</a></li>
+  <li class="active">分类管理</li>
+</ol>
+
+<table class="table table-hover table-bordered table-striped table-condensed">
+  <tbody>
+  <tr>
+    <th class="text-center-align">序号</th>
+    <th class="text-center-align">类别</th>
+    <th class="text-center-align">描述</th>
+    <th class="text-center-align">归属(1-博客 2-游戏)</th>
+    <th class="text-center-align">归属数</th>
+    <th class="text-center-align">基本操作</th>
+  </tr>
+  {% for catalog in catalogs %}
+  <tr>
+    <td class="text-center-align">{{ forloop.counter }}</td>
+    <td>{{ catalog.catalog.name }}</td>
+    <td>{{ catalog.catalog.desc }}</td>
+    <td class="text-center-align">{{ catalog.catalog.type }}</td>
+    <td class="text-center-align">{{ catalog.passage_count }}</td>
+    <td class="text-center-align">
+      <button class="btn btn-xs btn-info" data="{{ catalog.catalog.id }}" count="{{ catalog.passage_count }}" id="mngcatalog_modify_{{ catalog.catalog.id }}">修改</button>
+      <button class="btn btn-xs btn-danger" data="{{ catalog.catalog.id }}" count="{{ catalog.passage_count }}" id="mngcatalog_delete_{{ catalog.catalog.id }}">删除</button>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="col-md-3">
+  <div class="bulletin">
+    <h3>分类管理</h3><hr>
+    <p>
+      <button class="btn btn-info" id="mngcatalog_new_catalog">新增分类</button>
+    </p>
+  </div>
+</div>

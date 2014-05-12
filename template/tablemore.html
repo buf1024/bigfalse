@@ -1,0 +1,11 @@
+{% for item in items %}
+<tr>
+  <td class="text-center-align">{{ item.pre_id }}</td>
+  <td>{{ item.name }}</td>
+  <td>{{ item.desc }}</td>
+  <td class="text-center-align">{{ item.passage_count }}</td>
+  <td class="text-center-align">
+    <button class="btn btn-xs btn-success" data="{{ item.link }}" id="collect_view_{{ item.id }}">查看</button>
+  </td>
+</tr>
+{% endfor %}

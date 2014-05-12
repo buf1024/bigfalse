@@ -1,0 +1,42 @@
+<div class="col-md-offset-2 col-md-9">
+<ol class="breadcrumb">
+  <li><a href="#">汇总</a></li>
+  <li class="active">{{ collect_title }}</li>
+</ol>
+
+<table class="table table-hover table-bordered table-striped table-condensed">
+  <tbody id="table_more" >
+  <tr>
+    <th class="text-center-align">序号</th>
+    {% if is_comment %}
+    <th class="text-center-align">文章</th>
+    <th class="text-center-align">作者</th>
+    <th class="text-center-align">评论</th>
+    {% else %}
+    {% if is_passage %}
+    <th class="text-center-align">文章</th>
+    <th class="text-center-align">热度</th>
+    <th class="text-center-align">评论</th>
+    {% else %}
+    <th class="text-center-align">名称</th>
+    <th class="text-center-align">描述</th>
+    <th class="text-center-align">关联文章</th>
+    {% endif %}
+    {% endif %}
+    <th class="text-center-align">基本操作</th>
+  </tr>
+  {% for item in items %}
+  <tr>
+    <td class="text-center-align">{{ forloop.counter }}</td>
+    <td>{{ item.name }}</td>
+    <td>{{ item.desc }}</td>
+    <td class="text-center-align">{{ item.passage_count }}</td>
+    <td class="text-center-align">
+      <button class="btn btn-xs btn-success" data="{{ item.link }}" id="collect_view_{{ item.id }}">查看</button>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="col-md-3"></div>

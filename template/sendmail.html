@@ -1,0 +1,18 @@
+<p>
+  <h5>{{mail_content}}</h5>
+</p>
+<br>
+{% if notify_commenter %}
+<p>
+  ---------------------<br>
+  原评论<br>
+  ---------------------<br>
+  {{ref_content}}
+</p>
+{% endif %}
+<br>
+<br>
+<p>
+  详情请移步: <a href="{{comment_link}}" target="blank">{{comment_link_title}}</a>
+</p>
+        

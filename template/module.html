@@ -1,0 +1,15 @@
+<div class="module">
+	{% if module %}
+	<h3>{{ module.name }}</a></h3><hr>
+    {% if module_list%}
+	{% for mi in module_list %}
+	<p><a href="{{ mi.link }}" title="{{ mi.title }}">{{ mi.content|safe }}</a></p>
+	{% endfor %}
+    {% if module_more_link %}
+    <p><a href="{{module_more_link}}">更多</a></p>
+    {% endif %}
+    {% else %}
+    <p>{{nocontent|safe}}</p>
+    {% endif %}
+	{% endif %}
+</div>

@@ -1,0 +1,95 @@
+<div class="col-md-11">
+    <form class="form-horizontal" role="form">
+      <fieldset>
+        <div class="form-group">
+          <label for="passage_title" class="col-sm-2 control-label">标题</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="passage_title" value="{{ passage_title }}"placeholder="文章标题">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <textarea class="form-control" id="tinymce_editor" rows="30">{{ passage_content }}</textarea>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div class="form-group">
+          <label for="passage_catalog" class="col-sm-2 control-label">文章分类: </label>
+          <div class="col-sm-5">
+            <select class="form-control" id="passage_catalog">
+              {% for catalog in catalogs %}
+              {% ifequal catalog.id catalog_selected %}
+              <option selected="selected" value="{{ catalog.id }}">{{ catalog.name }}</option>
+              {% else %}
+              <option value="{{ catalog.id }}">{{ catalog.name }}</option>
+              {% endifequal %}
+              {% endfor %}
+              {% ifequal passage_role "new" %}
+              <option selected="selected" id="passage_catalog_hr" value="-1000">-------------</option>
+              {% else %}
+              <option id="passage_catalog_hr" value="-1000">-------------</option>
+              {% endifequal %}
+              <option id="passage_catalog_more"  value="-1">新建分类</option>
+            </select>
+          </div>
+          <div class="col-sm-5"></div>              
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-3">
+            <div class="checkbox">
+              <label>
+                {% if passage_visiable %}
+                <input type="checkbox" checked="checked" id="passage_visiable"> 发布
+                {% else %}
+                <input type="checkbox" id="passage_visiable"> 发布
+                {% endif %}
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="checkbox">
+              <label>
+                {% if passage_front %}
+                <input type="checkbox" checked="checked" id="passage_front"> 置顶
+                {% else %}
+                <input type="checkbox" id="passage_front"> 置顶
+                {% endif %}
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="checkbox">
+              <label>
+                {% if passage_commentable %}
+                <input type="checkbox" checked="checked" id="passage_commentable"> 允许评论     
+                {% else %}
+                <input type="checkbox" id="passage_commentable"> 允许评论
+                {% endif %}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="passage_summary" class="col-sm-2 control-label">摘要</label>
+          <div class="col-sm-10">                
+            <textarea class="form-control" id="passage_summary" rows="8">{{passage_summary}}</textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="passage_tags" class="col-sm-2 control-label">标签(;分隔)</label>
+          <div class="col-sm-10">         
+            <input type="text"  class="form-control" id="passage_tags" value="{{passage_tags}}"placeholder="插入标签(;分隔)">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <hr>
+    <div class="pull-right">
+      <button class="btn btn-success" id="passage_save" role="{{passage_role}}" data="{{passage_id}}">保存</button>
+      <button class="btn btn-success" id="passage_save_draft" role="{{passage_role}}" data="{{passage_id}}">保存为草稿</button>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>

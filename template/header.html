@@ -1,0 +1,18 @@
+<title>{{ webtitle }}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="baidu-site-verification" content="dKxyldDNwc" />
+<meta name="msvalidate.01" content="3D4B8873A90511E34824F49BD01E8E8E" />
+<meta name="360-site-verification" content="40e4a946866ad1ba1f37010fa8c40806" />
+{% for js in mstdjss %}
+<script type="text/javascript" src="{{ js }}"></script>
+{% endfor %}
+{% for js in mextjs %}
+<script type="text/javascript" src="{{ js }}"></script>
+{% endfor %}
+{% for css in mstdcss %}
+<link rel="stylesheet" type="text/css" href="{{ css }}" />
+{% endfor %}
+{% for css in mextcss %}
+<link rel="stylesheet" type="text/css" href="{{ css }}" />
+{% endfor %}

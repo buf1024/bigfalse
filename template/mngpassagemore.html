@@ -1,0 +1,14 @@
+{% for p in passages %}
+<tr>
+  <td class="text-center-align">{{ p.pre_id }}</td>
+  <td>{{ p.title }}</td>
+  <td>{{ p.catalog_name }}</td>
+  <td class="text-center-align">{{ p.hot }}</td>
+  <td class="text-center-align">{{ p.comment_count }}</td>
+  <td class="text-center-align">
+    <button class="btn btn-xs btn-info" data="{{ p.id }}" id="mngpassage_view_{{ p.id }}">查看</button>
+    <button class="btn btn-xs btn-info" data="{{ p.id }}" id="mngpassage_modify_{{ p.id }}">修改</button>
+    <button class="btn btn-xs btn-danger" data="{{ p.id }}" id="mngpassage_delete_{{ p.id }}">删除</button>
+  </td>
+</tr>
+{% endfor %}

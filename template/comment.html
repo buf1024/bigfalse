@@ -1,0 +1,73 @@
+<div class="comment-list" id="comment">
+  <div class="comment">
+    <button class="btn btn-info btn-xs" id="rss_subscribe"> RSS订阅</button>
+    <div class="btn-group">
+      <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
+        分享 <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="/share/weibo/passage/{{passage_id}}">分享到新浪微博</a></li>
+        <li><a href="/share/qq/passage/{{passage_id}}">分享到QQ空间</a></li>
+      </ul>
+    </div>
+  </div>
+  {% for comment in comments %}
+  <div class="comment" id = "{{ comment.id }}">
+    <div>
+      {% if comment.site %}
+      <a href="{{ comment.site }}" target="_blank"><img src="{{ comment.image }}" with="48" height="48"></a>
+      {% else %}
+      <a href="{{ comment.image }}"><img src="{{ comment.image }}" with="48" height="48"></a>
+      {% endif %}
+      <div class="comment-header">
+        <a href="#{{ comment.id }}" id="comment_author_{{comment.id}}">{{ comment.author }}</a>
+        <br>
+        <a href="#{{ comment.id }}">{{ comment.create_time | date:"Y-m-d H:i:s" }}</a>
+      </div>
+    </div>
+    <hr class="fixed-hr">
+    <p id="comment_content_{{comment.id}}" ><pre>{{comment.content}}</pre></p>
+    <p><button class="btn btn-info btn-xs" id="comment_reply_{{comment.id}}" data="{{comment.id}}" status="hide">回复</button></p>
+    {{comment.leavecomment | safe}}
+    {% for scomment in comment.comment_set %}
+    <div class="comment-inner" id="{{ scomment.id }}">
+      <div>
+        {% if scomment.site %}
+        <a href="{{ scomment.site }}" target="_blank"><img src="{{ scomment.image }}" with="48" height="48"></a>
+        {% else %}
+        <a href="{{ scomment.id }}"><img src="{{ scomment.image }}" with="48" height="48"></a>
+        {% endif %}
+        <div class="comment-header">
+        <a href="#{{ scomment.id }}" id="comment_autor_{{scomment.id}}">{{ scomment.author }}</a>
+        <br>
+        <a href="#{{ scomment.id }}">{{ scomment.create_time | date:"Y-m-d H:i:s" }}</a>
+      </div>
+    </div>
+    <hr class="fixed-hr">
+    <p id="comment_content_{{scomment.id}}"><pre>{{scomment.content}}<br>
+      <p class="post-font">----于 {{ scomment.create_time | date:"Y-m-d H:i:s" }} 回复 {{scomment.replyto}}</p></pre>
+    </p> 
+    <p><button class="btn btn-info btn-xs" id="comment_reply_{{scomment.id}}" data="{{scomment.id}}" status="hide">回复</button></p>
+    {{scomment.leavecomment | safe}}
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+  {%if enable_comment %}
+  {{ leavecomment | safe }}
+  {% endif %}
+</div>
+{% if has_passage %}
+<div class="comment">
+  {% if pre_passage %}
+  <a href="/passage/{{ pre_passage.id }}"><span class="label label-info">&lt;&lt; {{ pre_passage.title }}</span></a>
+  {% else %}
+  <span class="label label-info">已是最前一篇</span> 
+  {% endif %}
+  {% if nxt_passage %}
+  <a class="text-align-right" href="/passage/{{ nxt_passage.id }}"><span class="label label-info">{{ nxt_passage.title }} &gt;&gt;</span></a>
+  {% else %}
+  <span class="label label-info text-align-right">已是最后一篇</span> 
+  {% endif %}
+</div>
+{% endif %}

@@ -1,0 +1,55 @@
+<div class="comment {{exstyle}}" id="leave_comment_{{comment_id}}">
+  {% if comment_title %}
+  <p>{{comment_title}}</p>
+  {% endif %}
+  <hr class="fixed-hr">
+  <form class="form-horizontal" role="form">   
+    {%if is_admin%}
+    <div class="form-group display-none">
+      <div class="col-xs-4">
+        <input type="text" class="form-control" id="input_name_{{comment_id}}" placeholder="昵称">
+      </div>
+      <label class="col-xs-2 form-label-left" for="input_name_{{comment_id}}">昵称(*)</label>
+    </div>
+    <div  class="form-group display-none">
+      <div class="col-xs-4">
+        <input type="email" class="form-control" id="input_email_{{comment_id}}" placeholder="电子邮箱">
+      </div>
+      <label class="col-xs-2 form-label-left" for="input_email_{{comment_id}}">电子邮箱(*)</label>
+    </div>
+    <div class="form-group display-none">
+      <div class="col-xs-4">
+        <input type="text" class="form-control" id="input_site_{{comment_id}}" placeholder="站点">
+      </div>
+      <label class="col-xs-2 form-label-left" for="input_site_{{comment_id}}">站点</label>
+    </div>
+    {%else%}
+    <div class="form-group">
+      <div class="col-xs-4">
+        <input type="text" class="form-control" id="input_name_{{comment_id}}" placeholder="昵称">
+      </div>
+      <label class="col-xs-2 form-label-left" for="input_name_{{comment_id}}">昵称(*)</label>
+    </div>
+    <div  class="form-group">
+      <div class="col-xs-4">
+        <input type="email" class="form-control" id="input_email_{{comment_id}}" placeholder="电子邮箱">
+      </div>
+      <label class="col-xs-2 form-label-left" for="input_email_{{comment_id}}">电子邮箱(*)</label>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-4">
+        <input type="text" class="form-control" id="input_site_{{comment_id}}" placeholder="站点">
+      </div>
+      <label class="col-xs-2 form-label-left" for="input_site_{{comment_id}}">站点</label>
+    </div>
+    {%endif%}
+    <textarea class="form-control" id="input_comment_{{comment_id}}" rows="8"></textarea>      
+  </form>
+  <div class="form-btn-left">
+    {% if comment_title %}
+    <button type="button" id="submit_comment_{{comment_id}}" class="btn btn-info" data="{{ relate_id }}" role="p"  admin-flag="{{is_admin}}">提交</button>
+    {% else %}
+    <button type="button" id="submit_comment_{{comment_id}}" class="btn btn-xs btn-info" data="{{ relate_id }}" role="c"  admin-flag="{{is_admin}}">提交</button>
+    {% endif %}
+  </div>
+</div>

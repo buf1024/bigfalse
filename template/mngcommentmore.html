@@ -1,0 +1,14 @@
+{% for item in items %}
+<tr>
+  <td class="text-center-align">{{ item.pre_id }}</td>
+  <td>{{ item.title }}</td>
+  <td>{{ item.content }}</td>
+  <td class="text-center-align">{{ item.author }}</td>
+  <td class="text-center-align">{{ item.create_time |date:"Y-m-d H:i:s"}}</td>
+  <td class="text-center-align">
+    <button class="btn btn-xs btn-info" data="{{ item.id }}|{{ item.passage_id}}" id="mngcomment_view_{{ item.id }}">查看</button>
+    <button class="btn btn-xs btn-info" data="{{ item.id }}|{{ item.passage_id}}" id="mngcomment_reply_{{ item.id }}">回复</button>
+    <button class="btn btn-xs btn-danger" data="{{ item.id }}|{{ item.passage_id}}" id="mngcomment_delete_{{ item.id }}">删除</button>
+  </td>
+</tr>
+{% endfor %}

@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  {{ header_block|safe }}
+</head>
+<body>
+  {{ extral_block|safe }}
+  {{ nav_block|safe }}
+  <hr>
+  <hr>
+  <div class="container">
+    <div class="row">      
+       {{ content_block|safe }}
+    </div>
+  </div>
+  <hr>
+  {{ footer_block|safe }}
+</body>
+</html>

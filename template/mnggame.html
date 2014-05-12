@@ -1,0 +1,39 @@
+<div class="col-md-9">
+<ol class="breadcrumb">
+  <li><a href="#">管理</a></li>
+  <li class="active">游戏管理</li>
+</ol>
+<table class="table table-hover table-bordered table-striped table-condensed">
+  <tbody>
+  <tr>
+    <th class="text-center-align">序号</th>
+    <th class="text-center-align">名称</th>
+    <th class="text-center-align">描述</th>
+    <th class="text-center-align">分类</th>
+    <th class="text-center-align">游戏次数</th>
+    <th class="text-center-align">基本操作</th>
+  </tr>
+  {% for game in games %}
+  <tr>
+    <td class="text-center-align">{{ game.id}}</td>
+    <td>{{ game.name }}</td>
+    <td>{{ game.desc }}</td>
+    <td>{{ game.catalog.name }}</td>
+    <td class="text-center-align">{{ game.hot }}</td>
+    <td class="text-center-align">
+      <button class="btn btn-xs btn-info" id="mnggame_modify_{{ game.id }}" data="{{ game.id }}">修改</button>
+      <button class="btn btn-xs btn-danger" id="mnggame_delete_{{ game.id }}" data="{{ game.id }}">删除</button>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="col-md-3">
+  <div class="bulletin">
+    <h3>游戏管理</h3><hr>
+    <p>
+      <button class="btn btn-info" id="mnggame_new_game">新增游戏</button>
+    </p>
+  </div>
+</div>
