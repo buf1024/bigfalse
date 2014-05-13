@@ -36,9 +36,10 @@ function mngcomment_view(event) {
 }
 
 function mngcomment_delete(event) {
-    var id = $("#" + event.target.id).attr("data")
-    $("#dialog_confirm").modal();
-    $("#dialog_confirm_yes").attr("data", id);
+    var idpair = $("#" + event.target.id).attr("data")
+    var ids = idpair.split('|');    
+    $("#dialog_confirm_yes").attr("data", ids[0]);
+    $("#dialog_confirm").modal();    
 
 }
 

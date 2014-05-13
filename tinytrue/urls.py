@@ -36,6 +36,7 @@ urlpatterns = patterns('',
     url(r'^manage/passage/page/(\d+)$', 'tinylog.views.fetch_page_mngpassage'),
     
     url(r'^manage/comment$', 'tinylog.views.mngcomment'),
+    url(r'^manage/comment/delete$', 'tinylog.views.del_comment'),
     url(r'^manage/comment/page/(\d+)$', 'tinylog.views.fetch_page_mngcomment'),
     
     url(r'^manage/catalog$', 'tinylog.views.mngcatalog'),
@@ -101,16 +102,6 @@ if tinytrue.settings.DEBUG:
         url(r'^test/gameitem$', 'test_view_gameitem'),
     )
 
-    #静态文件
-    urlpatterns += patterns('',
-        url(r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/js'}),
-        url(r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/css'}),
-        url(r'^img/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/img'}),
-        url(r'^tinymce/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/tinymce'}),
-        url(r'^game/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/game'}),
-    )
-    
-if tinytrue.settings.USESAE:    
     #静态文件
     urlpatterns += patterns('',
         url(r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/js'}),

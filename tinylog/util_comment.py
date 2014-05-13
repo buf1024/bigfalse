@@ -30,6 +30,9 @@ def get_mngcomment_count_block():
 
     return h
   
+def get_mngcomment_extral_block():
+    return get_confirm_dialog()
+    
 def get_mngcomment_block():
     
     comments = Comment.objects.all()[:tinytrue.settings.MORE_DISPLAY_COUNT]
@@ -176,3 +179,20 @@ def fetch_page_commenthot(req, ctx):
         return HttpResponse('FAIL')
     
     return HttpResponse(page + '|' + data)
+    
+#admin required
+@csrf_exempt  
+def del_comment(req):
+    r = try_redirect(req)
+    if r != None:
+        return r
+    try:
+        jobj = json.loads(req.body)
+        c = Comment.objects.get(id=jobj['id'])
+        c.delete()
+        get_settings(True)
+    except Exception, e:
+        print e
+        return HttpResponse('FAIL')
+
+    return HttpResponse('SUCCESS')

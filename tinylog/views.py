@@ -409,6 +409,7 @@ def mngcomment(req):
     setting = settings['setting']
 
     d = {}   
+    d['extral_block'] = get_mngcomment_extral_block()
     d['header_block'] = get_header_block(setting.title + u' : 评论管理',
                                               extjs = ['/js/mngcomment.js', '/js/tablemore.js'])    
     d['nav_block'] = get_nav_block(req)
