@@ -1,7 +1,7 @@
 # Django settings for tinytrue project.
 import os.path
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 MYSQL_HOST = '127.0.0.1'

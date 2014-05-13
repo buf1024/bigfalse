@@ -111,3 +111,13 @@ if tinytrue.settings.DEBUG:
         url(r'^game/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/game'}),
     )
     
+if tinytrue.settings.USESAE:
+    #静态文件
+    urlpatterns += patterns('',
+        url(r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/js'}),
+        url(r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/css'}),
+        url(r'^img/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/img'}),
+        url(r'^tinymce/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/tinymce'}),
+        url(r'^game/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT + '/game'}),
+    )
+    
